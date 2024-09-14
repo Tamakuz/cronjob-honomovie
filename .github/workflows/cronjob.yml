@@ -1,6 +1,9 @@
 name: Fetch Data Cron Job
 
 on:
+  push:
+    branches:
+      - main # Ganti dengan branch yang relevan
   schedule:
     - cron: '* * * * *' # Setiap menit
   workflow_dispatch:
@@ -11,12 +14,12 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4 # Update ke versi terbaru
 
     - name: Set up Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4 # Update ke versi terbaru
       with:
-        node-version: '18' # Atur versi Node.js sesuai kebutuhan
+        node-version: '20' # Gunakan versi terbaru Node.js
 
     - name: Install dependencies
       run: npm install
