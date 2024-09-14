@@ -1,28 +1,23 @@
-name: Fetch Data Cron Job
+name: Run Script
 
 on:
-  push:
-    branches:
-      - main # Ganti dengan branch yang relevan
-  schedule:
-    - cron: '* * * * *' # Setiap menit
-  workflow_dispatch:
+  workflow_dispatch:  # Memungkinkan menjalankan workflow secara manual
 
 jobs:
   fetch-data:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4 # Update ke versi terbaru
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v4 # Update ke versi terbaru
-      with:
-        node-version: '20' # Gunakan versi terbaru Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
-    - name: Install dependencies
-      run: npm install
+      - name: Install Dependencies
+        run: npm install
 
-    - name: Run fetch data script
-      run: node src/index.js
+      - name: Run Script
+        run: node src/index.js
